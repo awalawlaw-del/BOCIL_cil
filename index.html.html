@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buat Kamu ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+  font-family:Arial,sans-serif; overflow:hidden;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffd1dc);
+}
+.card{
+  width:min(92%,420px); padding:34px 24px; text-align:center; color:#4b1830;
+  background:rgba(255,255,255,.88); border-radius:28px;
+  box-shadow:0 20px 60px rgba(100,20,50,.25); position:relative; z-index:2;
+}
+.emoji{font-size:58px}
+h1{font-size:30px;margin:12px 0}
+p{font-size:18px;line-height:1.6}
+button{
+  border:0;border-radius:999px;padding:14px 24px;margin:8px;
+  font-size:16px;font-weight:700;cursor:pointer;transition:.2s;
+}
+.primary{background:#ff3f72;color:white}
+.secondary{background:#ffe1ea;color:#b51f50}
+.hidden{display:none}
+.heart{position:fixed;font-size:24px;animation:fall 5s linear infinite;opacity:.8}
+@keyframes fall{0%{transform:translateY(-10vh) rotate(0)}100%{transform:translateY(110vh) rotate(360deg)}}
+#no{position:relative}
+</style>
+</head>
+<body>
+<div class="card">
+  <div id="s1">
+    <div class="emoji">💌</div>
+    <h1>Hai Bocil
+    <p>Yang baik hati dan tidak sombong.</p>
+    <button class="primary" onclick="next(2)">KLIK AKU 👀</button>
+  </div>
+
+  <div id="s2" class="hidden">
+    <div class="emoji">😌</div>
+    <h1>Jangan bahagia dulu...</h1>
+    <p>Kita tau kenapa saya nd Pangil kamu cantik tiap hari?</p>
+    <p><b>Karena.................. ❤️</b></p>
+    <button class="primary" onclick="next(3)">LANJUT ➜</button>
+  </div>
+
+  <div id="s3" class="hidden">
+    <div class="emoji">🥺</div>
+    <h1>Karna apadi...</h1>
+    <p><b>Ya karna ada pasal bilang gini . ❤️</b></p>
+    <p>hal-hal yang sudah menjadi kenyataan umum (fakta notoir) atau tidak disangkal oleh para pihak tidak perlu dibuktikan (Pasal 253 ayat (2) UU No. 20 Tahun 2025)</p>
+    <button class="primary" onclick="next(4)">TERAKHIR NAH ❤️</button>
+  </div>
+
+  <div id="s4" class="hidden">
+    <div class="emoji">💖</div>
+    <h1>Nahhhhhhhhhhhhhhhhhhhh...</h1>
+    <p><b>Cocok kannnnnnnnnnn</b></p>
+    <button class="primary" onclick="yes()">COCOK ❤️</button>
+    <button class="secondary" id="no" onmouseover="kabur()" onclick="kabur()">NDA😏</button>
+  </div>
+
+  <div id="s5" class="hidden">
+    <div class="emoji">🥰</div>
+    <h1>NAH COCOKKKKKK BEGITU! ❤️</h1>
+    <p>Kamu tetap cantik dan lucu menggemaskan tiap hari meskipun sya nda bilang...</p>
+    <p>Love you. ❤️</p>
+  </div>
+</div>
+
+<script>
+function next(n){
+  for(let i=1;i<=5;i++) document.getElementById('s'+i).classList.add('hidden');
+  document.getElementById('s'+n).classList.remove('hidden');
+}
+function yes(){next(5); hearts();}
+function kabur(){
+  const b=document.getElementById('no');
+  b.style.position='fixed';
+  b.style.left=Math.random()*75+'vw';
+  b.style.top=Math.random()*75+'vh';
+}
+function hearts(){
+  for(let i=0;i<28;i++){
+    const h=document.createElement('div');
+    h.className='heart'; h.textContent=['❤️','💕','💖','💗'][Math.floor(Math.random()*4)];
+    h.style.left=Math.random()*100+'vw';
+    h.style.animationDelay=Math.random()*2+'s';
+    h.style.animationDuration=(3+Math.random()*4)+'s';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),7000);
+  }
+}
+</script>
+</body>
+</html>
